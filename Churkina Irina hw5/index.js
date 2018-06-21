@@ -159,8 +159,8 @@ var order = function(meals){
   }
 
   this.startCooking = function () {
-    self.addMeal = function () {console.log('We`re prepairing your order :) You cannot change it');return}
-    self.removeMeal = function () {console.log('We`re prepairing your order :) You cannot change it');return}
+    self.addMeal = function () {console.log('We`re preparing your order :) You cannot change it');return}
+    self.removeMeal = function () {console.log('We`re preparing your order :) You cannot change it');return}
   }
 }
 
@@ -170,10 +170,8 @@ order.prototype.addMeal = function(meal) {
 order.prototype.removeMeal = function(meal) {
   if(typeof(meal)=='string'){
     for(var i=0; i<this.itemsList.length; i++){
-      alert(meal)
-      if(this.itemsList[i] == meal){
+      if(this.itemsList[i].name == meal){
         this.itemsList.splice(i,1);
-        alert(1)
       }
     }
   }else if(this.itemsList.indexOf(meal) != -1){
