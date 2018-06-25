@@ -40,22 +40,23 @@ salad.prototype.getSize = function() {
 
 //Hamburgers:
 var hamburger = function(name, bigSize, topping) {
-    if(!/burger/.test(name)){
-      console.log('this is not a burger');
-      return
+    if (!/burger/.test(name)) {
+        console.log('this is not a burger');
+        return
     }
+    this.topping = [];
     this.bigSize = bigSize;
     const smallBurgerRatio = 0.5;
     const _burger = {
         price: 100,
         calories: 40
     }
-    topping != undefined ? this.topping = topping : this.topping = []
     if (this.bigSize) {
         foodItem.call(this, name, _burger.price, _burger.calories, 1);
     } else {
         foodItem.call(this, name, _burger.price * smallBurgerRatio, _burger.calories * smallBurgerRatio, 1);
     }
+    topping != undefined && topping.length ? this.addTopping(topping) : '';
 }
 
 hamburger.prototype = Object.create(foodItem.prototype);
@@ -67,9 +68,8 @@ hamburger.prototype.addTopping = function(topping) {
     if (type === 'object') {
         this.topping = this.topping.concat(topping);
     } else if (type === 'string') {
-      !existed ? this.topping = []: '';
-      console.log(this.topping)
-      this.topping.push(topping);
+        !existed ? this.topping = [] : '';
+        this.topping.push(topping);
     }
     for (var t = existed; t < this.topping.length; t++) {
         switch (this.topping[t]) {
@@ -159,7 +159,7 @@ var order = function(meals) {
     }
     this.getOrderList = function() {
         var orderNames = this.itemsList.map(function(item) {
-          return item.name;
+            return item.name;
         });
         return orderNames
     }
@@ -177,7 +177,8 @@ var order = function(meals) {
 }
 
 order.prototype.addMeal = function(meal) {
-    this.itemsList.push(meal);
+    console.log(meal)
+    meal.name ? this.itemsList.push(meal) : '';
 }
 order.prototype.removeMeal = function(meal) {
     if (typeof(meal) == 'string') {
