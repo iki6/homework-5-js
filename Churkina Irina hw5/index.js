@@ -7,13 +7,13 @@ var foodItem = function(name, price, calories, portion) {
 
 //salads:
 var salad = function(name, weight) {
-    //menu constants:
-    const _regularPortion = 100;
-    const _caesar = {
+    //menu varants:
+    var _regularPortion = 100;
+    var _caesar = {
         price: 100,
         calories: 20
     };
-    const _olivier = {
+    var _olivier = {
         price: 50,
         calories: 80
     };
@@ -32,7 +32,7 @@ var salad = function(name, weight) {
     }
 }
 salad.prototype = Object.create(foodItem.prototype);
-salad.prototype.constructor = salad;
+salad.prototype.varructor = salad;
 
 salad.prototype.getSize = function() {
     return this.weight
@@ -46,8 +46,8 @@ var hamburger = function(name, bigSize, topping) {
     }
     this.topping = [];
     this.bigSize = bigSize;
-    const smallBurgerRatio = 0.5;
-    const _burger = {
+    var smallBurgerRatio = 0.5;
+    var _burger = {
         price: 100,
         calories: 40
     }
@@ -60,7 +60,7 @@ var hamburger = function(name, bigSize, topping) {
 }
 
 hamburger.prototype = Object.create(foodItem.prototype);
-hamburger.prototype.constructor = hamburger;
+hamburger.prototype.varructor = hamburger;
 
 hamburger.prototype.addTopping = function(topping) {
     var existed = this.topping.length;
@@ -103,12 +103,12 @@ hamburger.prototype.getStuffing = function() {
 
 //drinks:
 var drink = function(name) {
-    //menu constants:
-    const _cola = {
+    //menu varants:
+    var _cola = {
         price: 50,
         calories: 40
     }
-    const _coffee = {
+    var _coffee = {
         price: 80,
         calories: 20
     }
@@ -128,7 +128,7 @@ var drink = function(name) {
 }
 
 drink.prototype = Object.create(foodItem.prototype);
-drink.prototype.constructor = drink;
+drink.prototype.varructor = drink;
 
 //order:
 var order = function(meals) {
@@ -177,7 +177,6 @@ var order = function(meals) {
 }
 
 order.prototype.addMeal = function(meal) {
-    console.log(meal)
     meal.name ? this.itemsList.push(meal) : '';
 }
 order.prototype.removeMeal = function(meal) {
